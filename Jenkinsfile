@@ -39,7 +39,7 @@ node {
                 } else {
                     echo "Initial run (BUILD_NUMBER=${env.BUILD_NUMBER}). Skipping docker container removal."
                 }
-                sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@43.203.127.249 "pwd"')
+                // sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@43.203.127.249 "pwd"')
                 sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@43.203.127.249 "sudo docker run --name docker-fastapi --env-file .env -e TZ=Asia/Seoul -p 80:8000 -d -t ${DOCKER_USER_ID}/fisa-app:${BUILD_NUMBER}"')
             }
             echo "Stage Deploy success"
